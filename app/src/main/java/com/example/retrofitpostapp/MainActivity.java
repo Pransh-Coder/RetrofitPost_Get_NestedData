@@ -55,16 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Success"+response.body(),Toast.LENGTH_SHORT).show();
                 Log.e("response",response.message().toString());
 
-                categoryPojo = response.body();                 // all response added to category pojo obj
+                categoryPojo = response.body();                 // all response added to categorypojo obj
 
-                categoriesList= categoryPojo.getCategoriesList();
+                categoriesList= categoryPojo.getCategoriesList();       // response extracted from categorypojo and to arrayList
 
                 for (int i=0;i<categoriesList.size();i++){
 
                     bDataList = new ArrayList<>();                          // the old data we are sending it to dataArrayList so we can reinitialze it
                     bDataList = categoriesList.get(i).getbDataList();
 
-                    for (int j=0;j<bDataList.size();j++){                               // show all data finally  har baar refresh nahi kiya
+                    for (int j=0;j<bDataList.size();j++){                               // show all data finally  har baar refresh nahi kiya [we need to append data in existing data]
                         dataArrayList.addAll(bDataList.get(j).getDataList());
                     }
                 }
